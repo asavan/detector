@@ -56,7 +56,8 @@ module.exports = (env, argv) => {
                     compress: {
                         drop_console: true
                     }
-                }
+                },
+                extractComments: false
             }), new OptimizeCSSAssetsPlugin({})],
         },
         plugins: [
@@ -94,7 +95,7 @@ module.exports = (env, argv) => {
                     { from: 'src/images', to: './images' },
                     { from: 'models/', to: './models' },
                     { from: 'data/samples/', to: './data' },
-                    { from: 'data/json/', to: './data' },
+                    { from: 'data/json/', to: './models' },
                     { from: 'src/manifest.json', to: './' },
                     { from: 'github', to: './' }
                 ],
