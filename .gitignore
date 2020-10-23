@@ -9,6 +9,6 @@ target
 .idea
 generated
 node_modules
-data
-src
+local
+res
 package-lock.json

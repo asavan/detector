@@ -94,8 +94,7 @@ module.exports = (env, argv) => {
                 patterns: [
                     { from: 'src/images', to: './images' },
                     { from: 'models/', to: './models' },
-                    { from: 'data/samples/', to: './data' },
-                    { from: 'data/json/', to: './models' },
+                    { from: 'res/', to: './models' },
                     { from: 'src/manifest.json', to: './' },
                     { from: 'github', to: './' }
                 ],
