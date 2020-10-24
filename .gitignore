@@ -10,5 +10,4 @@ target
 generated
 node_modules
 local
-res
 package-lock.json
