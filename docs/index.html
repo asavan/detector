@@ -10,10 +10,21 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="manifest" href="./manifest.json">
     <link rel="apple-touch-icon" href="./images/face.svg">
-<link href="main.1643f36abdf8bcbf8fcb.min.css" rel="stylesheet"><script src="main.577445b0f211b1150589.min.js" async></script></head>
+<link href="main.2cfab1b84b201b6afd23.min.css" rel="stylesheet"><script src="main.729c54907c2598ed0b8e.min.js" async></script></head>
 <body>
-<label> Загрузите фото <br>
-<input type="file" id="imageUpload" accept="image/*">
-</label>
+<main>
+    <div class="left_container">
+    <label> Загрузите фото <br>
+        <input type="file" id="imageUpload" accept="image/*">
+    </label>
+        <div class="image_container"></div>
+    </div>
+    <div class="right_container">
+        <button class="start_video">Start video</button>
+    <div class="video_container">
+        <video id="video" width="720" height="560" autoplay muted></video>
+    </div>
+    </div>
+</main>
 </body>
 </html>

@@ -108,6 +108,7 @@ module.exports = (env, argv) => {
             hot: true,
             open: true,
             host: addr,
+            // host: '0.0.0.0',
             // clientLogLevel: 'debug',
             // watchContentBase: true,
         }

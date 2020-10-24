@@ -12,8 +12,19 @@
     <link rel="apple-touch-icon" href="./images/face.svg">
 </head>
 <body>
-<label> Загрузите фото <br>
-<input type="file" id="imageUpload" accept="image/*">
-</label>
+<main>
+    <div class="left_container">
+    <label> Загрузите фото <br>
+        <input type="file" id="imageUpload" accept="image/*">
+    </label>
+        <div class="image_container"></div>
+    </div>
+    <div class="right_container">
+        <button class="start_video">Start video</button>
+    <div class="video_container">
+        <video id="video" width="720" height="560" autoplay muted></video>
+    </div>
+    </div>
+</main>
 </body>
 </html>
