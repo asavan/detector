@@ -21,9 +21,12 @@ export default function game(window, document, settings) {
             'glider': "Шурик"
         };
 
-        function convert(label) {
+        function convert(label, found) {
             const def = names[label];
             if (def) {
+                if (found && found.gender === 'female' && label === 'unknown') {
+                    return "Незнакомка";
+                }
                 return def;
             }
             return label;
@@ -32,19 +35,30 @@ export default function game(window, document, settings) {
         return {convert: convert}
     }();
 
-    console.log(settings.mode);
-
     if (settings.modes.includes(settings.mode) && settings.mode !== 'default') {
-        if (settings.mode === 'diagnosis')
-        import('./diagnosis.js').then(mode => {
-            header.innerText = mode.default.header;
-            nameConvertor = mode.default.nameConvertor;
-        });
+        if (settings.mode === 'diagnosis') {
+            import('./diagnosis.js').then(mode => {
+                header.innerText = mode.default.header;
+                nameConvertor = mode.default.nameConvertor;
+            });
+        } else if (settings.mode === 'planeta') {
+            import('./planeta.js').then(mode => {
+                header.innerText = mode.default.header;
+                nameConvertor = mode.default.nameConvertor;
+            });
+        }
     }
 
+    let modelToLoad = "data";
+
+    if (settings.modes.includes(settings.mode) && settings.mode !== 'default') {
+        if (settings.mode === 'planeta') {
+            modelToLoad = "planeta";
+        }
+    }
 
     Promise.all([
-        loadLabeledImages2(),
+        loadLabeledImages2(modelToLoad),
         // faceapi.nets.tinyFaceDetector.loadFromUri('/models'),
         faceapi.nets.faceRecognitionNet.loadFromUri('/models'),
         faceapi.nets.faceLandmark68Net.loadFromUri('/models'),
@@ -121,8 +135,8 @@ export default function game(window, document, settings) {
     }
 
 
-    async function loadLabeledImages2() {
-        const res = await fetch("/models/data.json")
+    async function loadLabeledImages2(name) {
+        const res = await fetch("/models/" + name + ".json")
         return res.json();
     }
 

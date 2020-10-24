@@ -1,18 +1,15 @@
 export default {
-    header: "Диагноз по фото или видео",
+    header: "Найди кота",
     nameConvertor : function() {
         const names = {
-            'ira': "Рак"
+            'tania': "Кот"
         };
         function convert(label, found) {
             const def = names[label];
             if (def) {
                 return def;
             }
-            if (found && found.gender === 'female') {
-                return "Здорова!"
-            }
-            return "Здоров!";
+            return "";
         }
         return { convert: convert}
     }()
