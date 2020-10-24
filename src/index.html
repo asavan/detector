@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Узнай кто ты</title>
     <meta name="theme-color" content="#ffffff">
-    <meta name="description" content="Игра мышь и шомпол">
+    <meta name="description" content="Определитель успеха. Загрузи фотку себя или друга">
     <link id="favicon" rel="icon" href="./images/face.svg" sizes="any" type="image/svg+xml">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=6"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -14,13 +14,12 @@
 <body>
 <main>
     <div class="left_container">
-    <label> Загрузите фото <br>
-        <input type="file" id="imageUpload" accept="image/*">
-    </label>
+        <input type="file" id="imageUpload" class="inputfile" accept="image/*">
+        <label for="imageUpload" class="input_label"> Загрузить фото</label>
         <div class="image_container"></div>
     </div>
     <div class="right_container">
-        <button class="start_video">Start video</button>
+        <button class="start_video">Запустить видео</button>
     <div class="video_container">
         <video id="video" class="video_player" autoplay muted></video>
     </div>
