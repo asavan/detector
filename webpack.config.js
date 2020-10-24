@@ -107,8 +107,8 @@ module.exports = (env, argv) => {
             port: 8080,
             hot: true,
             open: true,
-            host: addr,
-            // host: '0.0.0.0',
+            // host: addr,
+            host: 'localhost',
             // clientLogLevel: 'debug',
             // watchContentBase: true,
         }
