@@ -18,6 +18,7 @@ body {
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
+    font-size: 4rem;
 }
 
 canvas {
@@ -30,10 +31,8 @@ main {
     margin: 0;
     padding: 20px;
     width: 100vw;
-    min-height: 100vh;
     display: flex;
     justify-content: space-around;
-    font-size: 4rem;
 }
 
 .left_container, .right_container {
@@ -44,15 +43,13 @@ main {
 
 .video_player {
     width: 720px;
-    height: 560px;
+    height: 540px;
+    /*background-color: aqua;*/
 }
 
-.image_container {
+.image_container, .video_container {
     position: relative;
-}
-
-.video_container {
-    position: relative;
+    margin-top: 20px;
 }
 
 .inputfile {
@@ -70,6 +67,11 @@ main {
     background-color: black;
     display: inline-block;
     padding: 20px;
+    border: none;
+    outline: none;
+    transition: background-color 0.1s;
+    /*margin-bottom: 20px;*/
+    cursor: pointer;
     font-family: Helvetica, sans-serif;
 }
 
@@ -86,18 +88,21 @@ main {
 
 img {
     object-fit: contain;
-    max-width: 600px;
-    max-height: 600px;
+    max-width: 720px;
+    max-height: 540px;
 }
 
 @media (max-width: 450px) {
     main {
         flex-direction: column;
-        font-size: 1.5rem;
+        /*font-size: 1.5rem;*/
     }
     img {
         max-width: 100vw;
         max-height: 50vh;
+    }
+    body {
+        font-size: 2rem;
     }
     .video_player {
         width: 100vw;

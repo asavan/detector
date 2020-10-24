@@ -51,19 +51,19 @@ async function start(arr) {
     // const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors, 0.6)
     // console.log(JSON.stringify(faceMatcher.toJSON()))
     let image = null;
-    let canvas = null;
+    let canvasImage = null;
     imageUpload.addEventListener('change', async () => {
         if (image) image.remove()
-        if (canvas) canvas.remove()
+        if (canvasImage) canvasImage.remove()
         image = await faceapi.bufferToImage(imageUpload.files[0])
         imageContainer.append(image)
-        canvas = faceapi.createCanvasFromMedia(image)
-        imageContainer.append(canvas)
+        canvasImage = faceapi.createCanvasFromMedia(image)
+        imageContainer.append(canvasImage)
         const displaySize = { width: image.width, height: image.height }
-        faceapi.matchDimensions(canvas, displaySize)
+        faceapi.matchDimensions(canvasImage, displaySize)
         const detections = await faceapi.detectAllFaces(image).withFaceLandmarks().withFaceDescriptors()
         const resizedDetections = faceapi.resizeResults(detections, displaySize)
-        drawRecognized(resizedDetections, canvas);
+        drawRecognized(resizedDetections, canvasImage);
     })
 
     startVideoButton.addEventListener('click', startVideo);
