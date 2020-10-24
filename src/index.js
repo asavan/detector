@@ -8,6 +8,7 @@ const video = document.getElementById('video');
 const videoContainer = document.querySelector('.video_container');
 const imageContainer = document.querySelector('.image_container');
 const startVideoButton = document.querySelector('.start_video');
+let timer = null;
 
 const nameConvertor = function() {
     const names = {
@@ -78,16 +79,19 @@ async function start(arr) {
     }
 
     video.addEventListener('playing', () => {
-        const canvas = faceapi.createCanvasFromMedia(video)
-        videoContainer.append(canvas)
-        const displaySize = { width: video.width, height: video.height }
-        faceapi.matchDimensions(canvas, displaySize)
-        setInterval(async () => {
+        const canvas = faceapi.createCanvasFromMedia(video);
+        videoContainer.append(canvas);
+        const displaySize = { width: video.getBoundingClientRect().width, height: video.getBoundingClientRect().height }
+        faceapi.matchDimensions(canvas, displaySize);
+        if (timer) {
+            clearInterval(timer);
+        }
+        timer = setInterval(async () => {
             const detections = await faceapi.detectAllFaces(video).withFaceLandmarks().withFaceDescriptors()
             const resizedDetections = faceapi.resizeResults(detections, displaySize)
             canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
-            faceapi.draw.drawDetections(canvas, resizedDetections)
-            faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
+            // faceapi.draw.drawDetections(canvas, resizedDetections)
+            // faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
             // faceapi.draw.drawFaceExpressions(canvas, resizedDetections)
             drawRecognized(resizedDetections, canvas);
 
@@ -103,7 +107,10 @@ async function loadLabeledImages2() {
 
 async function startVideo() {
     console.log("Video start");
-    const constraints = { video: { width: 720, height: 560 } };
+    if (timer) {
+        clearInterval(timer);
+    }
+    const constraints = { video: true };
 
     try {
         navigator.mediaDevices.getUserMedia(constraints)
