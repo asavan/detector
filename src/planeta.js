@@ -17,6 +17,8 @@ export default {
             'pawa': "Паша",
             'taras': "Тарас",
             'kolobok': "Пухляш",
+            'blag': "Сергей",
+            'anton_test': "Антон",
             'usy': "Егор"
         };
 
