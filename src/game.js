@@ -36,7 +36,7 @@ export default function game(window, document, settings) {
     }();
 
     if (settings.modes.includes(settings.mode) && settings.mode !== 'default') {
-        if (settings.mode === 'diagnosis') {
+        if (settings.mode === 'diagnosis' || settings.mode === 'ira') {
             import('./diagnosis.js').then(mode => {
                 header.innerText = mode.default.header;
                 nameConvertor = mode.default.nameConvertor;

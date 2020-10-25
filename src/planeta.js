@@ -19,6 +19,8 @@ export default {
             'kolobok': "Пухляш",
             'blag': "Сергей",
             'anton_test': "Антон",
+            'admin': "Сергей",
+            'student': "",
             'usy': "Егор"
         };
 
