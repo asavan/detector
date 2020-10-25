@@ -75,10 +75,10 @@ main {
     font-family: Helvetica, sans-serif;
 }
 
-.inputfile:focus + label,
+/*.inputfile:focus + label,*/
 .inputfile + label:hover,
-.start_video:hover,
-.start_video:focus {
+/*.start_video:focus,*/
+.start_video:hover {
     background-color: red;
 }
 
@@ -95,6 +95,7 @@ img {
 @media (max-width: 450px) {
     main {
         flex-direction: column;
+        padding: 1px;
         /*font-size: 1.5rem;*/
     }
     img {
@@ -102,10 +103,19 @@ img {
         max-height: 50vh;
     }
     body {
-        font-size: 2rem;
+        font-size: 1.7rem;
     }
     .video_player {
         width: 100vw;
         height: 50vh;
+    }
+
+    .main_header {
+        font-size: 3rem;
+    }
+
+    .inputfile + label, .start_video {
+        width: 100%;
+        text-align: center;
     }
 }

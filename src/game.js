@@ -68,19 +68,16 @@ export default function game(window, document, settings) {
     ]).then(start)
 
     async function start(arr) {
-        console.log(arr);
-        // startVideo();
-        // const labeledFaceDescriptors = await loadLabeledImages()
-        const labeledFaceDescriptors = arr[0];
-        const faceMatcher = faceapi.FaceMatcher.fromJSON(labeledFaceDescriptors);
-        // console.log(JSON.stringify(labeledFaceDescriptors));
-        // const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors, 0.6)
-        // console.log(JSON.stringify(faceMatcher.toJSON()))
+        const faceMatcher = faceapi.FaceMatcher.fromJSON(arr[0]);
         let image = null;
         let canvasImage = null;
         imageUpload.addEventListener('change', async () => {
-            if (image) image.remove()
-            if (canvasImage) canvasImage.remove()
+            if (image) {
+                image.remove();
+            }
+            if (canvasImage) {
+                canvasImage.remove();
+            }
             image = await faceapi.bufferToImage(imageUpload.files[0])
             imageContainer.append(image)
             canvasImage = faceapi.createCanvasFromMedia(image)
@@ -104,7 +101,6 @@ export default function game(window, document, settings) {
                 }
                 const found = resizedDetections[i];
                 const box = found.detection.box
-                console.log(found.gender);
                 const drawBox = new faceapi.draw.DrawBox(box, {label: nameConvertor.convert(result.label, found)})
                 drawBox.draw(canvas)
             })
@@ -122,15 +118,15 @@ export default function game(window, document, settings) {
                 clearInterval(timer);
             }
             timer = setInterval(async () => {
-                const detections = await faceapi.detectAllFaces(video).withFaceLandmarks().withFaceDescriptors()
-                const resizedDetections = faceapi.resizeResults(detections, displaySize)
+                const detections = await faceapi.detectAllFaces(video).withFaceLandmarks().withFaceDescriptors().withAgeAndGender();
+                const resizedDetections = faceapi.resizeResults(detections, displaySize);
                 canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
                 // faceapi.draw.drawDetections(canvas, resizedDetections)
                 // faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
                 // faceapi.draw.drawFaceExpressions(canvas, resizedDetections)
                 drawRecognized(resizedDetections, canvas);
 
-            }, 500)
+            }, 300);
         })
     }
 
@@ -141,7 +137,6 @@ export default function game(window, document, settings) {
     }
 
     async function startVideo() {
-        console.log("Video start");
         if (timer) {
             clearInterval(timer);
         }
