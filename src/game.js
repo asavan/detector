@@ -1,4 +1,5 @@
-import * as faceapi from "face-api.js";
+// import * as faceapi from "@vladmandic/face-api";
+import * as faceapi from '@vladmandic/face-api';
 
 export default function game(window, document, settings) {
     const imageUpload = document.getElementById('imageUpload');

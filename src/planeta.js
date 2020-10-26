@@ -26,7 +26,7 @@ export default {
 
         function convert(label, found) {
             const def = names[label];
-            if (def) {
+            if (def != null) {
                 if (found && found.gender === 'female' && label === 'unknown') {
                     return "Землянка";
                 }

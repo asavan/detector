@@ -111,6 +111,9 @@ module.exports = (env, argv) => {
             host: 'localhost',
             // clientLogLevel: 'debug',
             // watchContentBase: true,
+        },
+        node: {
+            fs: 'empty'
         }
     }
 };
