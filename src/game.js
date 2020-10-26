@@ -52,7 +52,7 @@ export default function game(window, document, settings) {
     let modelToLoad = "data";
 
     if (settings.modes.includes(settings.mode) && settings.mode !== 'default') {
-        if (settings.mode === 'planeta') {
+        if (settings.mode === 'planeta' || settings.mode === 'ira') {
             modelToLoad = "planeta";
         }
     }
