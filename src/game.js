@@ -47,6 +47,11 @@ export default function game(window, document, settings) {
                 header.innerText = mode.default.header;
                 nameConvertor = mode.default.nameConvertor;
             });
+        } else if (settings.mode === 'max') {
+            import('./max.js').then(mode => {
+                header.innerText = mode.default.header;
+                nameConvertor = mode.default.nameConvertor;
+            });
         }
     }
 
@@ -57,6 +62,8 @@ export default function game(window, document, settings) {
             modelToLoad = "planeta";
         } else if (settings.mode === 'ira') {
             modelToLoad = "ira";
+        } else if (settings.mode === 'max') {
+            modelToLoad = "max";
         }
     }
 
@@ -103,9 +110,11 @@ export default function game(window, document, settings) {
                     }
                 }
                 const found = resizedDetections[i];
-                const box = found.detection.box
-                const drawBox = new faceapi.draw.DrawBox(box, {label: nameConvertor.convert(result.label, found)})
-                drawBox.draw(canvas)
+                const label = nameConvertor.convert(result.label, found);
+                if (label !== 'unknown') {
+                    const drawBox = new faceapi.draw.DrawBox(found.detection.box, {label: label});
+                    drawBox.draw(canvas);
+                }
             })
         }
 

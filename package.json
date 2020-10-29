@@ -13,11 +13,13 @@
   "scripts": {
     "start": "webpack-dev-server --mode development --color",
     "build": "webpack --mode production",
+    "train": "node local\\train.js",
     "test": "ava"
   },
   "devDependencies": {
     "@tensorflow/tfjs": "^2.6.0",
     "@tensorflow/tfjs-node": "^2.6.0",
+    "@tensorflow/tfjs-node-gpu": "^2.7.0",
     "@vladmandic/face-api": "^0.8.3",
     "ava": "^3.12.1",
     "canvas": "^2.6.1",
