@@ -20,6 +20,7 @@ export default {
             'blag': "Сергей",
             'anton_test': "Антон",
             'admin': "Сергей",
+            'maria_piv': "Маша",
             'student': "",
             'usy': "Егор"
         };
