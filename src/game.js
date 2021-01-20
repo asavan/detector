@@ -52,18 +52,20 @@ export default function game(window, document, settings) {
                 header.innerText = mode.default.header;
                 nameConvertor = mode.default.nameConvertor;
             });
+        } else if (settings.mode === 'cat') {
+            import('./cat.js').then(mode => {
+                header.innerText = mode.default.header;
+                nameConvertor = mode.default.nameConvertor;
+            });
         }
     }
 
     let modelToLoad = "data";
 
     if (settings.modes.includes(settings.mode) && settings.mode !== 'default') {
-        if (settings.mode === 'planeta') {
-            modelToLoad = "planeta";
-        } else if (settings.mode === 'ira') {
-            modelToLoad = "ira";
-        } else if (settings.mode === 'max') {
-            modelToLoad = "max";
+        const names = ['planeta', 'ira', 'max', 'cat'];
+        if (names.includes(settings.mode)) {
+            modelToLoad = settings.mode;
         }
     }
 

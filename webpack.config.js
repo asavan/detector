@@ -79,6 +79,7 @@ module.exports = (env, argv) => {
             ...(devMode ? [] : [new InjectManifest({
                 swDest: './sw.js',
                 swSrc: './src/sw.js',
+                maximumFileSizeToCacheInBytes: 5000000,
                 exclude: [
                     /index\.html$/,
                     /CNAME$/,
