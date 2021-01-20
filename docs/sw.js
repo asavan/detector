@@ -78,7 +78,7 @@
             'revision': 'd443abfd550a910c026d40cad6ea6000',
             'url': 'models/age_gender_model-weights_manifest.json'
         }, {
-            'revision': '04181d1d119ed525be9969486ed5281c',
+            'revision': '5df76e0667113b33f8fddbe418036212',
             'url': 'models/cat.json'
         }, {
             'revision': 'cb5cfff6671c671c74640c87e52cbc2f',
