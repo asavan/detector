@@ -33,7 +33,7 @@
         return Object.prototype.hasOwnProperty.call(e, n)
     }, t.p = "", t(t.s = 0)
 }([function (e, n) {
-    const t = "cache-only-0.0.4";
+    const t = "cache-only-0.0.5";
 
     function r(e) {
         return caches.open(t).then((function (n) {
@@ -45,17 +45,17 @@
 
     function i() {
         const e = [{
-            'revision': '9dc42df42c8940b9ca8c1c38c6d766e0',
-            'url': '1.d3ba8574a4818773f49f.min.js'
+            'revision': '8238b39f57d2df06377f66a724be766e',
+            'url': '1.4cd1225baf611b38c7fd.min.js'
         }, {
-            'revision': '53a3efeba0c398f3d6f34b727698fe73',
-            'url': '2.20895e9c601c6da47c74.min.js'
+            'revision': 'ff64ff531ff756a508af33b9d579bc42',
+            'url': '2.930fde72763d293256d5.min.js'
         }, {
-            'revision': 'b2e55412c53eb5add4b67caaaabcaea5',
-            'url': '3.051f1682ccc5124ed20f.min.js'
+            'revision': '8c72e9418cbc4ac061b82886c56d384f',
+            'url': '3.5f05139e9e15050499b2.min.js'
         }, {
-            'revision': '35eb70e65337d2fa30b1b4fc05d16684',
-            'url': '4.8baf4371d0c90bbac7fd.min.js'
+            'revision': '5e6472dbaeb03990d9602bd4e6ccbe8a',
+            'url': '4.eaf5dae108994d64a028.min.js'
         }, {
             'revision': '19143f59d999a4e65249a6fb4c0ca3a4',
             'url': 'images/face.svg'
@@ -66,8 +66,8 @@
             'revision': 'e517849aff71f696b6e4b97839ef2ec9',
             'url': 'main.f1c060766f7c41739da6.min.css'
         }, {
-            'revision': 'e2bae02253f6c58e96247b38832e7576',
-            'url': 'main.fa4874e05ed80e18d19f.min.js'
+            'revision': 'db024c74f1aa566ff9f9cdd300777c8a',
+            'url': 'main.f82e2345ca9b2ca829a2.min.js'
         }, {
             'revision': 'ee0e7af76a665159ffd08b91a7a9b661',
             'url': 'manifest.json'
@@ -78,7 +78,7 @@
             'revision': 'd443abfd550a910c026d40cad6ea6000',
             'url': 'models/age_gender_model-weights_manifest.json'
         }, {
-            'revision': '5df76e0667113b33f8fddbe418036212',
+            'revision': '716826883fa633826da1ee95195d9a43',
             'url': 'models/cat.json'
         }, {
             'revision': 'cb5cfff6671c671c74640c87e52cbc2f',
@@ -116,12 +116,6 @@
         }, {
             'revision': 'adfbbf2bfa4bb822cbe991724b2619e7',
             'url': 'models/max.json'
-        }, {
-            'revision': '846e8dd4e6a7ed12a2c749324adf0e11',
-            'url': 'models/mtcnn_model-shard1'
-        }, {
-            'revision': '781bd744a5399d7cb0516d2a59a7c1c0',
-            'url': 'models/mtcnn_model-weights_manifest.json'
         }, {
             'revision': '32bc20c3567cb80c20ceac4f99daa428',
             'url': 'models/planeta.json'

@@ -17,10 +17,9 @@
     "test": "ava"
   },
   "devDependencies": {
-    "@tensorflow/tfjs": "^2.6.0",
-    "@tensorflow/tfjs-node": "^2.6.0",
-    "@tensorflow/tfjs-node-gpu": "^2.7.0",
-    "@vladmandic/face-api": "^0.8.3",
+    "@tensorflow/tfjs": "^2.8.3",
+    "@tensorflow/tfjs-node": "^2.8.3",
+    "@vladmandic/face-api": "^0.11.2",
     "ava": "^3.12.1",
     "canvas": "^2.6.1",
     "clean-webpack-plugin": "^3.0.0",
