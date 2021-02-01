@@ -10,21 +10,28 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="manifest" href="./manifest.json">
     <link rel="apple-touch-icon" href="./images/face.svg">
-<link href="main.f1c060766f7c41739da6.min.css" rel="stylesheet"><script src="main.1b834ca632b0b6cae6ef.min.js" async></script></head>
+<link href="main.aa9d5868c511f88d3723.min.css" rel="stylesheet"><script src="main.bb78dbf81d27a7954b92.min.js" async></script></head>
 <body>
 <h1 class="main_header">Узнай кто ты</h1>
 <main>
     <div class="left_container">
         <input type="file" id="imageUpload" class="inputfile" accept="image/*">
         <label for="imageUpload" class="input_label"> Загрузить фото</label>
+        <div class="processing hidden">Обработка...</div>
         <div class="image_container"></div>
     </div>
     <div class="right_container">
         <button class="start_video">Запустить видео</button>
-    <div class="video_container">
+    <div class="video_container hidden">
         <video id="video" class="video_player" autoplay muted></video>
     </div>
     </div>
 </main>
+<footer>
+    <p>Этот сайт не использует куки. Этот сайт не использует счетчики и не собирает никакую статистику.
+        Никакие данные не покидают ваш компьютер. Этот сайт работает вообще без интернета.
+        Серьезно, отключите вайфай(вытащите провод) и перезагрузите страницу - сайт всё равно откроется и будет работать.
+    </p>
+</footer>
 </body>
 </html>

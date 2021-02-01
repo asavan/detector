@@ -17,14 +17,21 @@
     <div class="left_container">
         <input type="file" id="imageUpload" class="inputfile" accept="image/*">
         <label for="imageUpload" class="input_label"> Загрузить фото</label>
+        <div class="processing hidden">Обработка...</div>
         <div class="image_container"></div>
     </div>
     <div class="right_container">
         <button class="start_video">Запустить видео</button>
-    <div class="video_container">
+    <div class="video_container hidden">
         <video id="video" class="video_player" autoplay muted></video>
     </div>
     </div>
 </main>
+<footer>
+    <p>Этот сайт не использует куки. Этот сайт не использует счетчики и не собирает никакую статистику.
+        Никакие данные не покидают ваш компьютер. Этот сайт работает вообще без интернета.
+        Серьезно, отключите вайфай(вытащите провод) и перезагрузите страницу - сайт всё равно откроется и будет работать.
+    </p>
+</footer>
 </body>
 </html>

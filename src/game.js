@@ -8,6 +8,8 @@ export default function game(window, document, settings) {
     const imageContainer = document.querySelector('.image_container');
     const startVideoButton = document.querySelector('.start_video');
     const header = document.querySelector('.main_header');
+    const footer = document.querySelector('footer');
+    const processing = document.querySelector('.processing');
     let timer = null;
 
     let nameConvertor = function () {
@@ -39,13 +41,15 @@ export default function game(window, document, settings) {
     if (settings.modes.includes(settings.mode) && settings.mode !== 'default') {
         let moduleTexts = null;
         if (settings.mode === 'diagnosis' || settings.mode === 'ira') {
-            moduleTexts = import('./diagnosis.js');
+            moduleTexts = import('./translations/diagnosis.js');
         } else if (settings.mode === 'planeta') {
-            moduleTexts = import('./planeta.js');
+            moduleTexts = import('./translations/planeta.js');
         } else if (settings.mode === 'max') {
-            moduleTexts = import('./max.js');
+            moduleTexts = import('./translations/max.js');
         } else if (settings.mode === 'cat') {
-            moduleTexts = import('./cat.js');
+            moduleTexts = import('./translations/cat.js');
+        } else if (settings.mode === 'meshok') {
+            moduleTexts = import('./translations/meshok.js');
         }
         if (moduleTexts) {
             moduleTexts.then(mode => {
@@ -74,7 +78,13 @@ export default function game(window, document, settings) {
         const faceMatcher = faceapi.FaceMatcher.fromJSON(arr[0]);
         let image = null;
         let canvasImage = null;
+        let canvasVideo = null;
+        imageUpload.addEventListener('click', () => {
+            videoContainer.classList.remove("hidden");
+            footer.classList.add("hidden");
+        });
         imageUpload.addEventListener('change', async () => {
+            processing.classList.remove("hidden");
             if (image) {
                 image.remove();
             }
@@ -89,8 +99,11 @@ export default function game(window, document, settings) {
             faceapi.matchDimensions(canvasImage, displaySize);
             const detections = await faceapi.detectAllFaces(image).withFaceLandmarks().withFaceDescriptors().withAgeAndGender();
             const resizedDetections = faceapi.resizeResults(detections, displaySize);
-            drawRecognized(resizedDetections, canvasImage);
-        })
+            processing.classList.add("hidden");
+            requestAnimationFrame(() => {
+                drawRecognized(resizedDetections, canvasImage);
+            });
+        });
 
         startVideoButton.addEventListener('click', startVideo);
 
@@ -112,8 +125,12 @@ export default function game(window, document, settings) {
         }
 
         video.addEventListener('playing', () => {
+            if (canvasVideo) {
+                canvasVideo.remove();
+            }
             const canvas = faceapi.createCanvasFromMedia(video);
             videoContainer.append(canvas);
+            canvasVideo = canvas;
             const displaySize = {
                 width: video.getBoundingClientRect().width,
                 height: video.getBoundingClientRect().height
@@ -147,6 +164,8 @@ export default function game(window, document, settings) {
     }
 
     async function startVideo() {
+        videoContainer.classList.remove("hidden");
+        footer.classList.add("hidden");
         if (timer) {
             clearInterval(timer);
         }

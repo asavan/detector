@@ -11,14 +11,23 @@
     --field-size: 3;
 }
 
+.hidden {
+    display: none;
+}
+
 body {
     width: 100vw;
     min-height: 100vh;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     flex-direction: column;
     font-size: 4rem;
+}
+
+footer {
+    font-size: 1.3rem;
+    margin: 20px;
 }
 
 canvas {
