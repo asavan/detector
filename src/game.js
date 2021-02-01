@@ -37,36 +37,27 @@ export default function game(window, document, settings) {
     }();
 
     if (settings.modes.includes(settings.mode) && settings.mode !== 'default') {
+        let moduleTexts = null;
         if (settings.mode === 'diagnosis' || settings.mode === 'ira') {
-            import('./diagnosis.js').then(mode => {
-                header.innerText = mode.default.header;
-                nameConvertor = mode.default.nameConvertor;
-            });
+            moduleTexts = import('./diagnosis.js');
         } else if (settings.mode === 'planeta') {
-            import('./planeta.js').then(mode => {
-                header.innerText = mode.default.header;
-                nameConvertor = mode.default.nameConvertor;
-            });
+            moduleTexts = import('./planeta.js');
         } else if (settings.mode === 'max') {
-            import('./max.js').then(mode => {
-                header.innerText = mode.default.header;
-                nameConvertor = mode.default.nameConvertor;
-            });
+            moduleTexts = import('./max.js');
         } else if (settings.mode === 'cat') {
-            import('./cat.js').then(mode => {
+            moduleTexts = import('./cat.js');
+        }
+        if (moduleTexts) {
+            moduleTexts.then(mode => {
                 header.innerText = mode.default.header;
                 nameConvertor = mode.default.nameConvertor;
             });
         }
     }
 
-    let modelToLoad = "data";
-
-    if (settings.modes.includes(settings.mode) && settings.mode !== 'default') {
-        const names = ['planeta', 'ira', 'max', 'cat'];
-        if (names.includes(settings.mode)) {
-            modelToLoad = settings.mode;
-        }
+    let modelToLoad = "default";
+    if (settings.modes.includes(settings.mode)) {
+        modelToLoad = settings.mode;
     }
 
     Promise.all([
@@ -146,8 +137,13 @@ export default function game(window, document, settings) {
 
 
     async function loadLabeledImages2(name) {
-        const res = await fetch("/models/" + name + ".json")
-        return res.json();
+        try {
+            const res = await fetch("/models/" + name + ".json")
+            return res.json();
+        } catch (e) {
+            const res = await fetch("/models/default.json")
+            return res.json();
+        }
     }
 
     async function startVideo() {
