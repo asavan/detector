@@ -1,4 +1,4 @@
-const version = "0.0.5";
+const version = "0.0.6";
 const CACHE = 'cache-only-' + version;
 
 function fromCache(request) {
@@ -18,10 +18,6 @@ function precache() {
         ]);
     });
 }
-
-self.addEventListener('install', function (evt) {
-    evt.waitUntil(precache());
-});
 
 self.addEventListener('install', function (evt) {
     evt.waitUntil(precache().then(function () {

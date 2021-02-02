@@ -1,14 +1,13 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 const os = require('os');
+
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserJSPlugin = require('terser-webpack-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const webpack = require('webpack');
-const HashOutput = require('webpack-plugin-hash-output');
 const {InjectManifest} = require('workbox-webpack-plugin');
-const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
 // process.traceDeprecation = true;
@@ -25,27 +24,15 @@ module.exports = (env, argv) => {
         entry: {main: "./src/index.js"},
         output: {
             path: path.resolve(__dirname, "docs"),
-            filename: devMode ? "[name].js" : "[name].[chunkhash].min.js",
-            // publicPath: devMode ? "/" : "./docs/"
-            // publicPath: "./dist/"
+            filename: devMode ? "[name].js" : "[name].[contenthash].min.js"
         },
         module: {
             rules: [
                 {
                     test: /\.css$/i,
                     use: [{
-                        loader: MiniCssExtractPlugin.loader,
-                        options: {
-                            // you can specify a publicPath here
-                            // by default it uses publicPath in webpackOptions.output
-                            // publicPath: '../',
-                            hmr: devMode,
-                        },
+                        loader: MiniCssExtractPlugin.loader
                     }, 'css-loader'],
-                },
-                {
-                    test: /worker\.js$/,
-                    use: { loader: 'worker-loader' },
                 }
             ]
         },
@@ -58,20 +45,14 @@ module.exports = (env, argv) => {
                     }
                 },
                 extractComments: false
-            }), new OptimizeCSSAssetsPlugin({})],
+            }), new CssMinimizerPlugin()],
         },
         plugins: [
             new CleanWebpackPlugin(),
-            new HashOutput(),
             new HtmlWebpackPlugin({
                 template: "./src/index.html",
                 minify: false,
-                // filename: devMode ? "./index.html" : "../index.html",
                 inject: 'head'
-                // filename: 'index.html'
-            }),
-            new ScriptExtHtmlWebpackPlugin({
-                defaultAttribute: 'async'
             }),
             new MiniCssExtractPlugin({
                 filename: devMode ? '[name].css' : '[name].[contenthash].min.css'
