@@ -94,8 +94,8 @@ module.exports = (env, argv) => {
             // clientLogLevel: 'debug',
             // watchContentBase: true,
         },
-        node: {
-            fs: 'empty'
+        resolve: {
+            fallback: { "util": false, "fs": false },
         }
     }
 };
