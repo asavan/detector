@@ -41,7 +41,7 @@ module.exports = (env, argv) => {
                 terserOptions: {
                     mangle: true,
                     compress: {
-                        drop_console: true
+                        drop_console: false
                     }
                 },
                 extractComments: false

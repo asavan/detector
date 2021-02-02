@@ -25,6 +25,10 @@ self.addEventListener('install', function (evt) {
     }));
 });
 
+self.addEventListener('activated', function (evt) {
+    console.log("Activated");
+});
+
 function networkOrCache(request) {
     return fetch(request).then(function (response) {
         return response.ok ? response : fromCache(request);
