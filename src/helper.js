@@ -55,7 +55,10 @@ function starter(window, document, settings, f) {
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('./sw.js', {scope: './'})
                 .then(function (registration) {
-                console.log('Service worker registered!');
+                    const footer = document.querySelector('footer');
+                    footer.classList.remove("hidden");
+            }).catch (function (error) {
+                console.log(error);
             });
             install(window, document, settings);
         }
