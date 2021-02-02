@@ -11,7 +11,7 @@
     ]
   },
   "scripts": {
-    "start": "webpack-dev-server --mode development --color",
+    "start": "webpack serve --mode development",
     "build": "webpack --mode production",
     "train": "node local\\train.js",
     "test-mesh": "node local\\test.js",
