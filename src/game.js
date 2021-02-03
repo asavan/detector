@@ -49,7 +49,7 @@ export default function game(window, document, settings) {
         } else if (settings.mode === 'cat') {
             moduleTexts = import('./translations/cat.js');
         } else if (settings.mode === 'meshok') {
-            moduleTexts = import('./translations/meshok.js');
+            moduleTexts = import('./translations/meshok.mjs');
         }
         if (moduleTexts) {
             moduleTexts.then(mode => {
@@ -91,10 +91,10 @@ export default function game(window, document, settings) {
             if (canvasImage) {
                 canvasImage.remove();
             }
-            image = await faceapi.bufferToImage(imageUpload.files[0])
-            imageContainer.append(image)
-            canvasImage = faceapi.createCanvasFromMedia(image)
-            imageContainer.append(canvasImage)
+            image = await faceapi.bufferToImage(imageUpload.files[0]);
+            imageContainer.append(image);
+            canvasImage = faceapi.createCanvasFromMedia(image);
+            imageContainer.append(canvasImage);
             const displaySize = {width: image.width, height: image.height}
             faceapi.matchDimensions(canvasImage, displaySize);
             const detections = await faceapi.detectAllFaces(image).withFaceLandmarks().withFaceDescriptors().withAgeAndGender();
