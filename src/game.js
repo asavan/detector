@@ -52,6 +52,8 @@ export default function game(window, document, settings) {
             moduleTexts = import('./translations/meshok.mjs');
         } else if (settings.mode === 'yandexlavka') {
             moduleTexts = import('./translations/yandexlavka.mjs');
+        } else if (settings.mode === 'membrana') {
+            moduleTexts = import('./translations/membrana.mjs');
         }
         if (moduleTexts) {
             moduleTexts.then(mode => {
