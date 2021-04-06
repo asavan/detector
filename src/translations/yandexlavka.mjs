@@ -7,6 +7,7 @@ export default {
             'pavlenko': "Алексей Павленко",
             'sava': "автор",
             'gorbushin': "Михаил Горбушин",
+            'savchenko': "Надежда Савченко",
             'lebedev': "Роман Лебедев"
         };
 
