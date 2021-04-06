@@ -95,7 +95,7 @@ module.exports = (env, argv) => {
             // watchContentBase: true,
         },
         resolve: {
-            fallback: { "util": false, "fs": false },
+            fallback: { "util": false, "fs": false, "os": false },
         }
     }
 };
