@@ -8,6 +8,12 @@ export default {
             'sava': "автор",
             'gorbushin': "Михаил Горбушин",
             'savchenko': "Надежда Савченко",
+            'zelenov': "Паша Зеленов",
+            'sutupov': "Пётр Сутупов",
+            'nechiporenko': "Олег",
+            'abakumov':"Миша Абакумов",
+            'kravchusha': "Наташа ахаха",
+            'chukreev': "Чукреев Костя",
             'lebedev': "Роман Лебедев"
         };
 
