@@ -5,21 +5,17 @@
   "main": "index.js",
   "author": "asavan",
   "license": "UNLICENSED",
-  "ava": {
-    "require": [
-      "esm"
-    ]
-  },
   "scripts": {
     "start": "webpack serve --mode development",
     "build": "webpack --mode production",
     "train": "node local\\train.js",
     "test-mesh": "node local\\test.js",
-    "test": "ava"
+    "test": "ava local/rec.test.js --timeout=1m"
   },
   "devDependencies": {
     "@tensorflow/tfjs": "^3.6.0",
     "@tensorflow/tfjs-node": "^3.6.1",
+    "@tensorflow/tfjs-node-gpu": "^3.6.1",
     "@vladmandic/face-api": "^1.2.3",
     "ava": "^3.15.0",
     "canvas": "^2.7.0",
