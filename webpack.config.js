@@ -16,14 +16,39 @@ const getLocalExternalIP = () => [].concat(...Object.values(os.networkInterfaces
     .filter(details => details.family === 'IPv4' && !details.internal)
     .pop().address
 
+const getSettingsPath = (site) => {
+    if (!site) {
+        return "./settings.js";
+    }
+    return "./modes/" + site + "/settings.js";
+}
+
+
+const getBuildPath = (site) => {
+    if (!site) {
+        return "docs";
+    }
+    return "build/" + site;
+}
+
+const getCopyPath = (site) => {
+    if (!site) {
+        return "github";
+    }
+    return "src/modes/" + site;
+}
+
+
 module.exports = (env, argv) => {
     const devMode = !argv || (argv.mode !== 'production');
+    const current_site = process.env.npm_package_config_site;
+    console.log(current_site);
     let addr = getLocalExternalIP() || '0.0.0.0';
     return {
 
         entry: {main: "./src/index.js"},
         output: {
-            path: path.resolve(__dirname, "docs"),
+            path: path.resolve(__dirname, getBuildPath(current_site)),
             filename: devMode ? "[name].js" : "[name].[contenthash].min.js"
         },
         module: {
@@ -33,6 +58,14 @@ module.exports = (env, argv) => {
                     use: [{
                         loader: MiniCssExtractPlugin.loader
                     }, 'css-loader'],
+                },
+                {
+                    test: /index\.js$/,
+                    loader: 'string-replace-loader',
+                    options: {
+                        search: '__CURRENT_SETTINGS__',
+                        replace: getSettingsPath(current_site),
+                    }
                 }
             ]
         },
@@ -48,7 +81,15 @@ module.exports = (env, argv) => {
             }), new CssMinimizerPlugin()],
         },
         plugins: [
-            new CleanWebpackPlugin(),
+            new CleanWebpackPlugin({
+                cleanOnceBeforeBuildPatterns: [
+                    '**/*',
+                    '!.git/**',
+                ]
+            }),
+            new webpack.DefinePlugin({
+                __USE_SERVICE_WORKERS__: !devMode
+            }),
             new HtmlWebpackPlugin({
                 template: "./src/index.html",
                 minify: false,
@@ -60,7 +101,7 @@ module.exports = (env, argv) => {
             ...(devMode ? [] : [new InjectManifest({
                 swDest: './sw.js',
                 swSrc: './src/sw.js',
-                maximumFileSizeToCacheInBytes: 5000000,
+                maximumFileSizeToCacheInBytes: 15000000,
                 exclude: [
                     /index\.html$/,
                     /CNAME$/,
@@ -69,16 +110,14 @@ module.exports = (env, argv) => {
                     /^.*well-known\/.*$/,
                 ]
             })]),
-            new webpack.DefinePlugin({
-                __USE_SERVICE_WORKERS__: !devMode
-            }),
             new CopyPlugin({
                 patterns: [
                     { from: 'src/images', to: './images' },
                     { from: 'models/', to: './models' },
                     { from: 'temp', to: './models' },
                     { from: 'src/manifest.json', to: './' },
-                    { from: 'github', to: './' }
+                    { from: 'github', to: './' },
+                    { from: getCopyPath(current_site), to: './' }
                 ],
             })
         ],

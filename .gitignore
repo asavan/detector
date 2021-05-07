@@ -12,3 +12,4 @@ node_modules
 local
 package-lock.json
 temp
+build

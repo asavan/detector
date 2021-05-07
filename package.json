@@ -9,13 +9,17 @@
     "start": "webpack serve --mode development",
     "build": "webpack --mode production",
     "train": "node local\\train.js",
-    "test-mesh": "node local\\test.js",
-    "test": "ava local/rec.test.js --timeout=1m"
+    "test": "ava local/rec.test.js --timeout=1m",
+    "test-small": "ava local/rec.test.js --timeout=1m --match='once'",
+    "all": "run-s train test build"
+  },
+  "config": {
+    "mode": "yandexlavka",
+    "site": "yandexlavka"
   },
   "devDependencies": {
     "@tensorflow/tfjs": "^3.6.0",
     "@tensorflow/tfjs-node": "^3.6.1",
-    "@tensorflow/tfjs-node-gpu": "^3.6.1",
     "@vladmandic/face-api": "^1.2.3",
     "ava": "^3.15.0",
     "canvas": "^2.7.0",
@@ -27,6 +31,8 @@
     "html-webpack-plugin": "^5.3.1",
     "mini-css-extract-plugin": "^1.6.0",
     "npm-check-updates": "^11.5.10",
+    "npm-run-all": "^4.1.5",
+    "string-replace-loader": "^3.0.1",
     "terser-webpack-plugin": "^5.1.1",
     "webpack": "^5.36.2",
     "webpack-cli": "^4.7.0",
