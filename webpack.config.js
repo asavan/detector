@@ -28,7 +28,7 @@ const getBuildPath = (site) => {
     if (!site) {
         return "docs";
     }
-    return "build/" + site;
+    return "../sites/" + site;
 }
 
 const getCopyPath = (site) => {
