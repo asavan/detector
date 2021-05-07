@@ -10,10 +10,11 @@ export default {
             'savchenko': "Надежда Савченко",
             'zelenov': "Паша Зеленов",
             'sutupov': "Пётр Сутупов",
-            'nechiporenko': "Олег",
+            'nechiporenko': "ОЛЕГ",
             'abakumov':"Миша Абакумов",
-            'kravchusha': "Наташа ахаха",
+            'kravchusha': "Ахаха, Наташа",
             'chukreev': "Чукреев Костя",
+            'kuvaev': "Котики или ливай",
             'lebedev': "Роман Лебедев"
         };
 
