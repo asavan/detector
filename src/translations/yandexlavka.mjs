@@ -3,18 +3,24 @@ export default {
     nameConvertor: function () {
         const names = {
             'unknown': "",
+            'abakumov':"Миша Абакумов",
+            'bugaevsky': "Андрей",
+            'chukreev': "Чукреев Костя",
+            'eureka': "Женя",
             'fedorov': "Сергей Федоров",
-            'pavlenko': "Алексей Павленко",
-            'sava': "автор",
             'gorbushin': "Михаил Горбушин",
+            'gusev': "Арсентий",
+            'kravchusha': "Ахаха, Наташа",
+            'kuvaev': "Котики или ливай",
+            'meshkevich': "Роман",
+            'nechiporenko': "ОЛЕГ",
+            'pavlenko': "Алексей Павленко",
+            'saifutdinov': "Юра",
+            'sava': "автор",
             'savchenko': "Надежда Савченко",
+            'shpilkovsky': "Андрей",
             'zelenov': "Паша Зеленов",
             'sutupov': "Пётр Сутупов",
-            'nechiporenko': "ОЛЕГ",
-            'abakumov':"Миша Абакумов",
-            'kravchusha': "Ахаха, Наташа",
-            'chukreev': "Чукреев Костя",
-            'kuvaev': "Котики или ливай",
             'lebedev': "Роман Лебедев"
         };
 

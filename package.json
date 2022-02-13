@@ -11,11 +11,12 @@
     "train": "node local\\train.js",
     "test": "ava local/rec.test.js --timeout=1m",
     "test-small": "ava local/rec.test.js --timeout=1m --match='once'",
+    "test-lavka": "ava local/rec.test.js --timeout=1m --match='yandexlavka'",
     "all": "run-s train test build"
   },
   "config": {
-    "mode": "cat",
-    "site": ""
+    "mode": "yandexlavka",
+    "site": "yandexlavka"
   },
   "devDependencies": {
     "@tensorflow/tfjs": "^3.13.0",
