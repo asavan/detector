@@ -13,6 +13,8 @@ export default {
             'kravchusha': "Ахаха, Наташа",
             'kuvaev': "Котики или ливай",
             'meshkevich': "Роман",
+            'matancev': "Федя",
+            'verhovyh': "Лера",
             'nechiporenko': "ОЛЕГ",
             'pavlenko': "Алексей Павленко",
             'saifutdinov': "Юра",
