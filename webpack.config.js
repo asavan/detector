@@ -1,16 +1,16 @@
-const path = require("path");
-const os = require('os');
+import path from 'path'
+import os from 'os'
 
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const TerserJSPlugin = require('terser-webpack-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
-const webpack = require('webpack');
-const {InjectManifest} = require('workbox-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
+import { fileURLToPath } from 'url';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import TerserJSPlugin from 'terser-webpack-plugin';
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
+import {CleanWebpackPlugin} from 'clean-webpack-plugin';
+import {InjectManifest} from 'workbox-webpack-plugin';
+import CopyPlugin from 'copy-webpack-plugin'
+import webpack from 'webpack'
 
-// process.traceDeprecation = true;
 
 const getLocalExternalIP = () => [].concat(...Object.values(os.networkInterfaces()))
     .filter(details => (details.family === 'IPv4' || details.family === 4) && !details.internal)
@@ -39,16 +39,17 @@ const getCopyPath = (site) => {
 }
 
 
-module.exports = (env, argv) => {
+const config = (env, argv) => {
     const devMode = !argv || (argv.mode !== 'production');
     const current_site = process.env.npm_package_config_site;
     console.log(current_site);
+    const dirname = path.dirname(fileURLToPath(import.meta.url));
     let addr = getLocalExternalIP() || '0.0.0.0';
     return {
 
         entry: {main: "./src/index.js"},
         output: {
-            path: path.resolve(__dirname, getBuildPath(current_site)),
+            path: path.resolve(dirname, getBuildPath(current_site)),
             filename: devMode ? "[name].js" : "[name].[contenthash].min.js"
         },
         module: {
@@ -122,19 +123,18 @@ module.exports = (env, argv) => {
             })
         ],
         devServer: {
-            // contentBase: path.resolve(__dirname, "src"),
             historyApiFallback: true,
             compress: true,
             port: 8080,
             hot: true,
             open: true,
             // host: addr,
-            host: 'localhost',
-            // clientLogLevel: 'debug',
-            // watchContentBase: true,
+            host: 'localhost'
         },
         resolve: {
             fallback: { "util": false, "fs": false, "os": false },
         }
     }
 };
+
+export default config;
