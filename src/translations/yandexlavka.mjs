@@ -7,6 +7,7 @@ export default {
             'bugaevsky': "Андрей",
             'chukreev': "Чукреев Костя",
             'eureka': "Женя",
+            'vica': "Вика",
             'fedorov': "Сергей Федоров",
             'gorbushin': "Михаил Горбушин",
             'gusev': "Арсентий",
