@@ -17,8 +17,8 @@
     "all": "run-s train test build"
   },
   "config": {
-    "mode": "yandexlavka",
-    "site": "yandexlavka"
+    "mode": "default",
+    "site": ""
   },
   "devDependencies": {
     "@tensorflow/tfjs": "^3.20.0",

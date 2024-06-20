@@ -1,4 +1,3 @@
-// import * as faceapi from "@vladmandic/face-api";
 import * as faceapi from '@vladmandic/face-api';
 
 export default function game(window, document, settings) {
@@ -71,10 +70,10 @@ export default function game(window, document, settings) {
     Promise.all([
         loadLabeledImages2(modelToLoad),
         // faceapi.nets.tinyFaceDetector.loadFromUri('/models'),
-        faceapi.nets.faceRecognitionNet.loadFromUri('/models'),
-        faceapi.nets.faceLandmark68Net.loadFromUri('/models'),
-        faceapi.nets.ageGenderNet.loadFromUri('/models'),
-        faceapi.nets.ssdMobilenetv1.loadFromUri('/models'),
+        faceapi.nets.faceRecognitionNet.loadFromUri('./models'),
+        faceapi.nets.faceLandmark68Net.loadFromUri('./models'),
+        faceapi.nets.ageGenderNet.loadFromUri('./models'),
+        faceapi.nets.ssdMobilenetv1.loadFromUri('./models'),
         // faceapi.nets.faceExpressionNet.loadFromUri('/models')
     ]).then(start)
 
