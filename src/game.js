@@ -158,10 +158,10 @@ export default function game(window, document, settings) {
 
     async function loadLabeledImages2(name) {
         try {
-            const res = await fetch("/models/" + name + ".json")
+            const res = await fetch("./models/" + name + ".json")
             return res.json();
         } catch (e) {
-            const res = await fetch("/models/default.json")
+            const res = await fetch("./models/default.json")
             return res.json();
         }
     }
